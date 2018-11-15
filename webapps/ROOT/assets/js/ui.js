@@ -10,21 +10,21 @@ $(function () {
 	});
 
     //360 팝업창 생성(cardDivision : reel)
-    $("#bot > div").add(
-        "<div class='reel-wrapper popupArea'>" +
-            "<div class='popHeader'>" +
-                "<span id='reelTitle' class='popupTitle'></span>" +
-                "<button class='btnTopClose'></button>" +
-            "</div>" +
-            "<div id='reelArea' class='popBody'>" +
-                "<div class='imgBox' id='phantom black'>" +
-                    "<img src='assets/image/car/00001.jpg' alt='' class='reel' id='image' data-images='assets/image/car/000##.jpg' data-frames='60' data-cw='true' />" +
-                "</div>" +
-                "<div class='popTxt'>" +
-                    "<span>좌우로 드래그하여 돌려보세요.</span>" +
-                "</div>" +
-            "</div>" +
-        "</div>").appendTo("#bot");
+    //$("#bot > div").add(
+    //    "<div class='reel-wrapper popupArea'>" +
+    //        "<div class='popHeader'>" +
+    //            "<span id='reelTitle' class='popupTitle'></span>" +
+    //            "<button class='btnTopClose'></button>" +
+    //        "</div>" +
+    //        "<div id='reelArea' class='popBody'>" +
+    //            "<div class='imgBox' id='phantom black'>" +
+    //                "<img src='assets/image/car/00001.jpg' alt='' class='reel' id='image' data-images='assets/image/car/000##.jpg' data-frames='60' data-cw='true' />" +
+    //            "</div>" +
+    //            "<div class='popTxt'>" +
+    //                "<span>좌우로 드래그하여 돌려보세요.</span>" +
+    //            "</div>" +
+    //        "</div>" +
+    //    "</div>").appendTo("#bot");
     //동영상 팝업창 생성(cardDivision : play)
     $("#bot > div").add(
         "<div class='mov-wrapper popupArea'>" +
@@ -60,14 +60,14 @@ $(function () {
         "</div>").appendTo("#bot");
 
     //제스처 케릭터 영역 생성
-    $("#bot > div").add(
-        "<div class='gesture-wrapper gestureArea'>" +
-            "<div class='gestureHeader'>" +
-                "<span id='gestureTitle' class='gestureTitle'></span>" +
-            "</div>" +
-            "<div id='animationDiv' style='width:250px;height:488px;background:#000'>" +
-            "</div>" +
-        "</div>").appendTo("#bot");
+    //$("#bot > div").add(
+    //    "<div class='gesture-wrapper gestureArea'>" +
+    //        "<div class='gestureHeader'>" +
+    //            "<span id='gestureTitle' class='gestureTitle'></span>" +
+    //        "</div>" +
+    //        "<div id='animationDiv' style='width:250px;height:488px;background:#000'>" +
+    //        "</div>" +
+    //    "</div>").appendTo("#bot");
 
     //챗봇창 상단 생성
     //$(".wc-header > span").add(
@@ -148,22 +148,22 @@ $(function () {
     });
     
     //챗봇 제스처 동작
-    var startGesture = 0;
-    $('.topGestureArea').click(function () {
-        if ($('.topGestureIcon').css('float') == 'left') {
-            //Gesture off
-            $('.topGestureIcon').css({ 'float': 'right' });
-            $('.gesture-wrapper').hide().animate({ "right": "-380px", "opacity": "0" }, "slow").fadeOut("slow");
-        } else {
-            //Gesture on
-            $('.topGestureIcon').css({ 'float': 'left' });
-            if (startGesture == 0) {
-                playAnimation('ChatBot_AniAll01');
-                startGesture = 1;
-            }
-            $('.gesture-wrapper').show().animate({ "right": "380px", "opacity": "1" }, "slow").fadeIn("slow");
-        }
-    });
+    //var startGesture = 0;
+    //$('.topGestureArea').click(function () {
+    //    if ($('.topGestureIcon').css('float') == 'left') {
+    //        //Gesture off
+    //        $('.topGestureIcon').css({ 'float': 'right' });
+    //        $('.gesture-wrapper').hide().animate({ "right": "-380px", "opacity": "0" }, "slow").fadeOut("slow");
+    //    } else {
+    //        //Gesture on
+    //        $('.topGestureIcon').css({ 'float': 'left' });
+    //        if (startGesture == 0) {
+    //            playAnimation('ChatBot_AniAll01');
+    //            startGesture = 1;
+    //        }
+    //        $('.gesture-wrapper').show().animate({ "right": "380px", "opacity": "1" }, "slow").fadeIn("slow");
+    //    }
+    //});
     //닫기 버튼
     $('.btnTopClose').click(function () {
         $("#video").attr('src', '');
