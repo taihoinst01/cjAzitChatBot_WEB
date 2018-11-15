@@ -92,8 +92,8 @@ $(function () {
         "</div > ").appendTo(".wc-chatview-panel");
 
     //챗봇 마이크 생성
-    $(".wc-console > div").add(
-        "<div class='ttsMic ttsMicBlack' onclick='startButton(event)'>&nbsp</div > ").appendTo(".wc-console");
+    //$(".wc-console > div").add(
+    //    "<div class='ttsMic ttsMicBlack' onclick='startButton(event)'>&nbsp</div > ").appendTo(".wc-console");
 
     //챗봇창 버튼 동작
     $('.btnClose').click(function () {
