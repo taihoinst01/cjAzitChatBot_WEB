@@ -3135,7 +3135,7 @@
                             if (!e.content) return null;
                             var r = new i.AdaptiveCardBuilder;
                             //TTS 적용 
-                            lfn_speakTTS(e.content.text);
+                            //lfn_speakTTS(e.content.text);
                             return e.content.images && e.content.images.forEach(function (t) {
                                 return r.addImage(t.url)
                             }), r.addCommon(e.content), o.createElement(s.AdaptiveCardContainer, {
@@ -3195,7 +3195,7 @@
                             if (!e.content) return null;
                             var r = new i.AdaptiveCardBuilder;
                             //TTS 적용 
-                            lfn_speakTTS(e.content.text);
+                            //lfn_speakTTS(e.content.text);
                             // KSO 2018.06.21 gesture loading 여부 확인 후 해당 gesture 번호 실행, gesture 로딩 이후에 실행 됨
                             // gesture num( 0 ~ 19 ) 까지 있음
                             if ($('#animationDiv').hasClass('gOn')) {
@@ -13439,6 +13439,7 @@
                 var t = this;
                 this._element = document.createElement("div"), this._element.className = "ac-container", this.backgroundImage && (this._element.style.backgroundImage = "url('" + this.backgroundImage + "')", this._element.style.backgroundRepeat = "no-repeat", this._element.style.backgroundSize = "cover");
                 var e = this.getBackgroundColor();
+                
                 if (e && (this._element.style.backgroundColor = d.stringToCssColor(e)), this.selectAction && this._element.classList.add("ac-selectable"), this._element.style.paddingTop = this.padding.top + "px", this._element.style.paddingRight = this.padding.right + "px", this._element.style.paddingBottom = this.padding.bottom + "px", this._element.style.paddingLeft = this.padding.left + "px", this._element.onclick = function(e) {
                         null != t.selectAction && (t.selectAction.execute(), e.cancelBubble = !0)
                     }, this._items.length > 0)
@@ -13452,6 +13453,8 @@
                             d.appendChild(this._element, o), n++
                         }
                     }
+                //개행추가 20181113
+                this._element.innerHTML = this._element.innerHTML.replace("/n", "</br>");
                 return this._element
             }, e.prototype.getBackgroundColor = function() {
                 return null
