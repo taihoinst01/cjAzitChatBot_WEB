@@ -1,4 +1,6 @@
-! function(t, e) {
+var deviceChk = '';
+
+! function (t, e) {
     "object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.BotChat = e() : t.BotChat = e()
 }(this, function() {
     return function(t) {
@@ -1322,6 +1324,12 @@
                         className: "wc-header"
                     }));
                     var r;
+
+                    //KSO :: DeviceChk(P-PC, M-Mobile)
+                    isMobile();
+
+                    console.log(deviceChk);
+
                     return "detect" === this.props.resize && (r = i.createElement(g, {
                         onresize: this.resizeListener
                     })), i.createElement(u.Provider, {
@@ -7234,6 +7242,14 @@
                         n.items.push(o)
                     }
                 }, t.prototype.addButtons = function(t) {
+                    
+                    //KSO :: Mobile의 경우 특정버튼 표시X
+                    if (deviceChk == 'P') {
+                        //pc 일 경우
+                    } else if (deviceChk == 'M') {
+                        //mobile 일 경우
+                    }
+
                     t && (this.card.actions = t.map(function(t) {
                         var e = r.__assign({
                             __isBotFrameworkCardAction: !0
@@ -20727,3 +20743,15 @@
         e.Any = n(171), e.Cc = n(169), e.Cf = n(444), e.P = n(86), e.Z = n(170)
     }])
 });
+
+function isMobile() {
+    var UserAgent = navigator.userAgent;
+
+    if (UserAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+        deviceChk = 'M';
+        return true;
+    } else {
+        deviceChk = 'P';
+        return false;
+    }
+}
