@@ -10,21 +10,21 @@ $(function () {
 	});
 
     //360 팝업창 생성(cardDivision : reel)
-    //$("#bot > div").add(
-    //    "<div class='reel-wrapper popupArea'>" +
-    //        "<div class='popHeader'>" +
-    //            "<span id='reelTitle' class='popupTitle'></span>" +
-    //            "<button class='btnTopClose'></button>" +
-    //        "</div>" +
-    //        "<div id='reelArea' class='popBody'>" +
-    //            "<div class='imgBox' id='phantom black'>" +
-    //                "<img src='assets/image/car/00001.jpg' alt='' class='reel' id='image' data-images='assets/image/car/000##.jpg' data-frames='60' data-cw='true' />" +
-    //            "</div>" +
-    //            "<div class='popTxt'>" +
-    //                "<span>좌우로 드래그하여 돌려보세요.</span>" +
-    //            "</div>" +
-    //        "</div>" +
-    //    "</div>").appendTo("#bot");
+    $("#bot > div").add(
+        "<div class='reel-wrapper popupArea'>" +
+            "<div class='popHeader'>" +
+                "<span id='reelTitle' class='popupTitle'></span>" +
+                "<button class='btnTopClose'></button>" +
+            "</div>" +
+            "<div id='reelArea' class='popBody'>" +
+                "<div class='imgBox' id='phantom black'>" +
+                    "<img src='assets/image/car/00001.jpg' alt='' class='reel' id='image' data-images='assets/image/car/000##.jpg' data-frames='60' data-cw='true' />" +
+                "</div>" +
+                "<div class='popTxt'>" +
+                    "<span>좌우로 드래그하여 돌려보세요.</span>" +
+                "</div>" +
+            "</div>" +
+        "</div>").appendTo("#bot");
     //동영상 팝업창 생성(cardDivision : play)
     $("#bot > div").add(
         "<div class='mov-wrapper popupArea'>" +
@@ -70,33 +70,38 @@ $(function () {
     //    "</div>").appendTo("#bot");
 
     //챗봇창 상단 생성
-    //$(".wc-header > span").add(
-    //    "<span class='chatTitle'></span>" +
-    //    "<span class='chatTitleText'><strong>cjAzit</strong> ChatBot</span>" +
-    //    "<span class='topIcon btnClose'><button class='topIcon03'></button></span>" +
-    //    "<span class='topIcon btnLayer btnLayerFull'><button class='topIcon02'></button></span>" +
-    //    "<span class='topIcon btnMin'><button class='topIcon01'></button></span>" +
-    //    "<span class='topGestureArea'>" +
-    //    "<div class='topGestureOff'>OFF</div><div class='topGestureOn'>ON</div> <div class='topGestureIcon'></div>  " +
-    //    "</span>").appendTo(".wc-header");
-    //챗봇창 상단 생성
     $(".wc-header > span").add(
-        "<span class='chatTitle'></span>" +
-        "<span class='chatTitleText'><strong>cjAzit</strong> ChatBot</span>" +
-        "<span class='topIcon btnClose'><button class='topIcon03'></button></span>" +
-        "<span class='topIcon btnLayer btnLayerFull'><button class='topIcon02'></button></span>" +
-        "<span class='topIcon btnMin'><button class='topIcon01'></button></span>").appendTo(".wc-header");
+        "<span class='chatTitle'></span>"
+        //"<span class='chatTitleText'><strong>업무도우미 ChatBot</strong></span>" +
+        //"<span class='topIcon btnClose'><button class='topIcon03'></button></span>" +
+        //"<span class='topIcon btnLayer btnLayerFull'><button class='topIcon02'></button></span>" +
+        //"<span class='topIcon btnMin'><button class='topIcon01'></button></span>" +
+        //"<span class='topGestureArea'>" +
+        //"<div class='topGestureOff'>OFF</div><div class='topGestureOn'>ON</div> <div class='topGestureIcon'></div>  " +
+        //"</span>"
+    ).appendTo(".wc-header");
 
-    //챗봇 메뉴창 생성
+    //챗봇 SAP Btn 생성
     $(".wc-chatview-panel > div").add(
-        "<div class='menuBox off'>" +
-            "<p class='menuReStartBtn'><span> Menu </span></p>" +
-            "<ul>" +
+        "<div class='sapBtn off'>" +
+            //"<p class='menuReStartBtn'><span> Menu </span></p>" +
+            //"<ul>" +
             //"<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu('Accident analysis')'> Accident analysis </span></a></li>" +
             //"<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu('Accident trends')'> Accident trends </span></a></li>" +
-            "<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu()'> return home </span></a></li>" +
-            "</ul>" +
+            //"<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu()'> return home </span></a></li>" +
+            //"</ul>" +
         "</div > ").appendTo(".wc-chatview-panel");
+
+    //챗봇 MENU BTN
+    //$(".wc-chatview-panel > div").add(
+    //    "<div class='menuBox off'>" +
+    //        "<p class='menuReStartBtn'><span> Menu </span></p>" +
+    //        "<ul>" +
+    //        //"<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu('Accident analysis')'> Accident analysis </span></a></li>" +
+    //        //"<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu('Accident trends')'> Accident trends </span></a></li>" +
+    //        "<li class='menuSelectBtn'><span><a href='#' onclick='viewMenu()'> return home </span></a></li>" +
+    //        "</ul>" +
+    //    "</div > ").appendTo(".wc-chatview-panel");
 
     //챗봇 마이크 생성
     //$(".wc-console > div").add(
@@ -137,33 +142,42 @@ $(function () {
     });
 
     //챗봇 메뉴 버튼 동작
-    $('.menuIcon').click(function (){
-        if ($('.menuBox').hasClass("off")) {
-            $('.menuBox').removeClass('off').addClass('on');
-            $('.menuBox').css({ 'display': 'block' });
+    $('.sapIcon').click(function () {
+        if ($('.sapBtn').hasClass("off")) {
+            $('.sapBtn').removeClass('off').addClass('on');
+            $('.sapIcon').css({ 'background-color': '#00aad2' });
         } else {
-            $('.menuBox').removeClass('on').addClass('off');
-            $('.menuBox').css({ 'display': 'none' });
+            $('.sapBtn').removeClass('on').addClass('off');
+            $('.sapIcon').css({ 'background-color': '#302f35' });
         }
     });
-    
-    //챗봇 제스처 동작
-    //var startGesture = 0;
-    //$('.topGestureArea').click(function () {
-    //    if ($('.topGestureIcon').css('float') == 'left') {
-    //        //Gesture off
-    //        $('.topGestureIcon').css({ 'float': 'right' });
-    //        $('.gesture-wrapper').hide().animate({ "right": "-380px", "opacity": "0" }, "slow").fadeOut("slow");
+    //$('.menuIcon').click(function () {
+    //    if ($('.menuBox').hasClass("off")) {
+    //        $('.menuBox').removeClass('off').addClass('on');
+    //        $('.menuBox').css({ 'display': 'block' });
     //    } else {
-    //        //Gesture on
-    //        $('.topGestureIcon').css({ 'float': 'left' });
-    //        if (startGesture == 0) {
-    //            playAnimation('ChatBot_AniAll01');
-    //            startGesture = 1;
-    //        }
-    //        $('.gesture-wrapper').show().animate({ "right": "380px", "opacity": "1" }, "slow").fadeIn("slow");
+    //        $('.menuBox').removeClass('on').addClass('off');
+    //        $('.menuBox').css({ 'display': 'none' });
     //    }
     //});
+    
+    //챗봇 제스처 동작
+    var startGesture = 0;
+    $('.topGestureArea').click(function () {
+        if ($('.topGestureIcon').css('float') == 'left') {
+            //Gesture off
+            $('.topGestureIcon').css({ 'float': 'right' });
+            $('.gesture-wrapper').hide().animate({ "right": "-380px", "opacity": "0" }, "slow").fadeOut("slow");
+        } else {
+            //Gesture on
+            $('.topGestureIcon').css({ 'float': 'left' });
+            if (startGesture == 0) {
+                playAnimation('ChatBot_AniAll01');
+                startGesture = 1;
+            }
+            $('.gesture-wrapper').show().animate({ "right": "380px", "opacity": "1" }, "slow").fadeIn("slow");
+        }
+    });
     //닫기 버튼
     $('.btnTopClose').click(function () {
         $("#video").attr('src', '');
@@ -308,15 +322,15 @@ $(function () {
 });
 
 //챗봇 메뉴 처음으로 돌아가기
-//function viewMenu() {
-//    var returnText = "return home";     // 처음으로 돌아가는 텍스트
-//    $('div.wc-console').addClass('has-text');
-//    $('input[type="text"].wc-shellinput').attr('value', returnText);
-//    $('input[type="text"].wc-shellinput').val(returnText);
-//    $('label.wc-send').trigger('click');
-//    $('input[type="text"].wc-shellinput').attr('value', '');
-//    $('input[type="text"].wc-shellinput').val('');
-//    $('.wc-console').removeClass('has-text');
-//    $('.menuBox').removeClass('on').addClass('off');
-//    $('.menuBox').css({ 'display': 'none' });
-//}
+function viewMenu() {
+    var returnText = "return home";     // 처음으로 돌아가는 텍스트
+    $('div.wc-console').addClass('has-text');
+    $('input[type="text"].wc-shellinput').attr('value', returnText);
+    $('input[type="text"].wc-shellinput').val(returnText);
+    $('label.wc-send').trigger('click');
+    $('input[type="text"].wc-shellinput').attr('value', '');
+    $('input[type="text"].wc-shellinput').val('');
+    $('.wc-console').removeClass('has-text');
+    $('.menuBox').removeClass('on').addClass('off');
+    $('.menuBox').css({ 'display': 'none' });
+}

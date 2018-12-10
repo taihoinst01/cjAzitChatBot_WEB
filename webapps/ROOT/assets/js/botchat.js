@@ -1,6 +1,4 @@
-var deviceChk = '';
-
-! function (t, e) {
+! function(t, e) {
     "object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.BotChat = e() : t.BotChat = e()
 }(this, function() {
     return function(t) {
@@ -1326,9 +1324,8 @@ var deviceChk = '';
                     var r;
 
                     //KSO :: DeviceChk(P-PC, M-Mobile)
-                    isMobile();
-
-                    console.log(deviceChk);
+                    //isMobile();
+                    //console.log(deviceChk);
 
                     return "detect" === this.props.resize && (r = i.createElement(g, {
                         onresize: this.resizeListener
@@ -2209,7 +2206,8 @@ var deviceChk = '';
             i = n(188),
             s = n(39),
             a = n(29);
-        e.sendMessage = function(t, e, n) {
+        e.sendMessage = function (t, e, n) {
+            appendLoadingDiv(); // 17.06.20 수정 -- 로딩 div 생성
             return {
                 type: "Send_Message",
                 activity: {
@@ -3143,7 +3141,7 @@ var deviceChk = '';
                             if (!e.content) return null;
                             var r = new i.AdaptiveCardBuilder;
                             //TTS 적용 
-                            //lfn_speakTTS(e.content.text);
+                            lfn_speakTTS(e.content.text);
                             return e.content.images && e.content.images.forEach(function (t) {
                                 return r.addImage(t.url)
                             }), r.addCommon(e.content), o.createElement(s.AdaptiveCardContainer, {
@@ -3199,7 +3197,6 @@ var deviceChk = '';
                                 , o.createElement("div", { className: "hidden", alt: e.content.title })
                                 , o.createElement("div", { className: "hidden", alt: e.content.card_value }))
                         } else {
-                            console.log("제스너 no : " + e.content.gesture);
                             if (!e.content) return null;
                             var r = new i.AdaptiveCardBuilder;
                             //TTS 적용 
@@ -3208,6 +3205,14 @@ var deviceChk = '';
                             // gesture num( 0 ~ 19 ) 까지 있음
                             if ($('#animationDiv').hasClass('gOn')) {
                                 playAction(e.content.gesture);
+                            }
+
+                            
+                            //임시
+                            if (e.content.buttons[0] != null) { //openUrl 없을때 처리
+                                if (e.content.buttons[0].value == '#') {
+                                    e.content.buttons[0].title = 'URL 준비중입니다.';
+                                }
                             }
 
                             return e.content.images && e.content.images.forEach(function (t) {
@@ -3582,6 +3587,18 @@ var deviceChk = '';
                 }, t.prototype.catchPostError = function(t) {
                     if (403 === t.status) this.expiredToken();
                     else if (t.status >= 400 && t.status < 500) return i.Observable.throw(t);
+                    //KSO
+                    //else if (502 === t.status) {
+                    //    return i.Observable.ajax({
+                    //        method: "POST",
+                    //        url: t.request.url,
+                    //        body: JSON.parse(t.request.body),
+                    //        timeout: 2e4,
+                    //        headers: t.request.headers
+                    //    }).catch(function (t) {
+                    //        $('#loading').remove();
+                    //    });
+                    //}
                     return i.Observable.of("retry")
                 }, t.prototype.catchExpiredToken = function(t) {
                     return t === a ? i.Observable.of("retry") : i.Observable.throw(t)
@@ -6810,7 +6827,8 @@ var deviceChk = '';
                 lineColor: "#eeeeee"
             },
             //fontFamily: '"Segoe UI", sans-serif',
-            fontFamily: '"Nanum Gothic", sans-serif',
+            //fontFamily: '"Nanum Gothic", sans-serif',
+            fontFamily: '"CJONLYONENEWbodyRegular", sans-serif',    //KSO CJ font
             fontSizes: {
                 small: 12,
                 normal: 13,
@@ -7009,7 +7027,7 @@ var deviceChk = '';
                 function e(e) {
                     return t.call(this, e) || this
                 }
-                return r.__extends(e, t), e.prototype.shouldComponentUpdate = function(t) {
+                return r.__extends(e, t), e.prototype.shouldComponentUpdate = function (t) {
                     return this.props.activity !== t.activity || this.props.format !== t.format || "message" === this.props.activity.type && "carousel" === this.props.activity.attachmentLayout && this.props.size !== t.size
                 }, e.prototype.render = function() {
                     var t = this.props,
@@ -7143,6 +7161,7 @@ var deviceChk = '';
             }, e.prototype.render = function() {
                 var t, e = this,
                     n = this.state && this.state.errors && this.state.errors.length > 0;
+
                 /*KSO*/
                 var msgMinutes = new Date().getMinutes();
                 var tempMinutes = msgMinutes;
@@ -7157,7 +7176,10 @@ var deviceChk = '';
                 }
                 var writeTime = ampm + " " + getHour + ":" + tempMinutes;
                 var timeDiv = "";
-                timeDiv = s.createElement("p", { className: "timeStampBot" }, writeTime);
+
+                if (this.props.card.actions.length == 0) {
+                    timeDiv = s.createElement("p", { className: "timeStampBot" }, writeTime);
+                }
 
                 return t = n ? s.createElement("div", null, s.createElement("svg", {
                     className: "error-icon",
@@ -7174,7 +7196,6 @@ var deviceChk = '';
                         return e.div = t
                     },
                     onClick: function (t) {
-                        console.log(t);
                         return e.onClick(t)
                     }
                 }, t, timeDiv)
@@ -7242,14 +7263,6 @@ var deviceChk = '';
                         n.items.push(o)
                     }
                 }, t.prototype.addButtons = function(t) {
-                    
-                    //KSO :: Mobile의 경우 특정버튼 표시X
-                    if (deviceChk == 'P') {
-                        //pc 일 경우
-                    } else if (deviceChk == 'M') {
-                        //mobile 일 경우
-                    }
-
                     t && (this.card.actions = t.map(function(t) {
                         var e = r.__assign({
                             __isBotFrameworkCardAction: !0
@@ -7291,6 +7304,7 @@ var deviceChk = '';
         Object.defineProperty(e, "__esModule", {
             value: !0
         });
+
         var r = n(11),
             o = n(9),
             i = n(52),
@@ -7301,7 +7315,8 @@ var deviceChk = '';
                     return t.call(this, e) || this
                 }
                 return r.__extends(e, t), e.prototype.updateContentWidth = function() {
-                    var t = this.props.size.width - this.props.format.carouselMargin;
+                    //var t = this.props.size.width - this.props.format.carouselMargin;
+                    var t = parseInt($('.wc-message-groups').css('width')) - this.props.format.carouselMargin - 30; //KSO 줄였을때 carousel 크기 조정
                     this.root.style.width = "", this.root.offsetWidth > t && (this.root.style.width = t.toString() + "px", this.hscroll.updateScrollButtons())
                 }, e.prototype.componentDidMount = function() {
                     this.updateContentWidth()
@@ -7309,6 +7324,24 @@ var deviceChk = '';
                     this.updateContentWidth()
                 }, e.prototype.render = function() {
                     var t = this;
+
+                    /*KSO carousel 부분*/
+                    var msgMinutes = new Date().getMinutes();
+                    var tempMinutes = msgMinutes;
+                    if (msgMinutes < 10) {
+                        tempMinutes = "0" + tempMinutes.toString();
+                    }
+                    var getHour = new Date().getHours();
+                    var ampm = '오전';
+                    if (getHour > 12) {
+                        getHour = getHour - 12
+                        ampm = '오후';
+                    }
+                    var writeTime = ampm + " " + getHour + ":" + tempMinutes;
+                    var timeDiv = "";
+
+                    timeDiv = o.createElement("p", { className: "timeStampBot" }, writeTime);
+
                     return o.createElement("div", {
                         className: "wc-carousel",
                         ref: function(e) {
@@ -7321,7 +7354,7 @@ var deviceChk = '';
                         prevSvgPathData: "M 16.5 22 L 19 19.5 L 13.5 14 L 19 8.5 L 16.5 6 L 8.5 14 L 16.5 22 Z",
                         nextSvgPathData: "M 12.5 22 L 10 19.5 L 15.5 14 L 10 8.5 L 12.5 6 L 20.5 14 L 12.5 22 Z",
                         scrollUnit: "item"
-                    }, o.createElement(u, r.__assign({}, this.props))))
+                    }, o.createElement(u, r.__assign({}, this.props))), timeDiv)
                 }, e
             }(o.PureComponent);
         e.Carousel = c;
@@ -7790,11 +7823,16 @@ var deviceChk = '';
                     //}, o.createElement("svg", null, o.createElement("path", {
                     //    d: "M19.96 4.79m-2 0a2 2 0 0 1 4 0 2 2 0 0 1-4 0zM8.32 4.19L2.5 15.53 22.45 15.53 17.46 8.56 14.42 11.18 8.32 4.19ZM1.04 1L1.04 17 24.96 17 24.96 1 1.04 1ZM1.03 0L24.96 0C25.54 0 26 0.45 26 0.99L26 17.01C26 17.55 25.53 18 24.96 18L1.03 18C0.46 18 0 17.55 0 17.01L0 0.99C0 0.45 0.47 0 1.03 0Z"
                     //    }))),
-                        o.createElement("div", {
-                            className: "wc-menu"
-                        }, o.createElement("div", {
-                            className: "menuIcon"
-                            }, 'menu')),
+                        //o.createElement("div", {
+                        //    className: "wc-sap"
+                        //}, o.createElement("div", {
+                        //    className: "sapIcon"
+                        //    }, 'SAP')),
+                        //o.createElement("div", {
+                        //    className: "wc-menu"
+                        //}, o.createElement("div", {
+                        //    className: "menuIcon"
+                        //    }, 'menu')),
                         o.createElement("div", {
                             className: "wc-textbox"
                         },
@@ -7826,6 +7864,12 @@ var deviceChk = '';
                             if ((t.props.inputText === 'return home') && (t.textInput.value == '') && (e.key == 'Enter')) {
                                 t.props.inputText = '';
                             }
+
+                            //KSO (sap 체크 여부 판단)
+                            if ($('.sapBtn').hasClass("on") && (e.key == 'Enter')) {
+                                console.log("SAP search : " + t.props.inputText);
+                            }
+
                             return t.onKeyPress(e)
                         },
                         onFocus: function () {
@@ -7856,10 +7900,16 @@ var deviceChk = '';
                                 t.textInput.value = '';
                                 $('.sttText').attr('value', '');
                             }
-                            //KSO (menu부분 현재 사용x)
+                            //KSO (menu 부분 현재 사용x)
                             if ((t.props.inputText === '' || t.props.inputText === 'return home') && (t.textInput.value !== '')) {
                                 t.props.inputText = t.textInput.value;
                             }
+
+                            //KSO (sap 체크 여부 판단)
+                            if ($('.sapBtn').hasClass("on")) {
+                                console.log("SAP search : " + t.props.inputText);
+                            }
+
                             return t.onClickSend()
                         }
                     }, 
@@ -7868,7 +7918,7 @@ var deviceChk = '';
                         //}))
                         o.createElement("div", {
                             className: "sendIcon"
-                        }, 'send')
+                        }/*, 'send'*/)
                         ), o.createElement("label", {
                         className: s,
                         onClick: function() {
@@ -7956,7 +8006,7 @@ var deviceChk = '';
                 messageFailed: "couldn't send",
                 messageSending: "sending",
                 timeSent: " at %1",
-                consolePlaceholder: "Please enter your message.",
+                consolePlaceholder: "궁금한 것을 물어보세요!",
                 listeningIndicator: "Listening..."
             },
             ja: {
@@ -13455,7 +13505,6 @@ var deviceChk = '';
                 var t = this;
                 this._element = document.createElement("div"), this._element.className = "ac-container", this.backgroundImage && (this._element.style.backgroundImage = "url('" + this.backgroundImage + "')", this._element.style.backgroundRepeat = "no-repeat", this._element.style.backgroundSize = "cover");
                 var e = this.getBackgroundColor();
-                
                 if (e && (this._element.style.backgroundColor = d.stringToCssColor(e)), this.selectAction && this._element.classList.add("ac-selectable"), this._element.style.paddingTop = this.padding.top + "px", this._element.style.paddingRight = this.padding.right + "px", this._element.style.paddingBottom = this.padding.bottom + "px", this._element.style.paddingLeft = this.padding.left + "px", this._element.onclick = function(e) {
                         null != t.selectAction && (t.selectAction.execute(), e.cancelBubble = !0)
                     }, this._items.length > 0)
@@ -13470,7 +13519,7 @@ var deviceChk = '';
                         }
                     }
                 //개행추가 20181113
-                this._element.innerHTML = this._element.innerHTML.replace("/n", "</br>");
+                this._element.innerHTML = this._element.innerHTML.split("/n").join("</br>");
                 return this._element
             }, e.prototype.getBackgroundColor = function() {
                 return null
@@ -15868,6 +15917,7 @@ var deviceChk = '';
                     case "option":
                         t.getReactMountReady().enqueue(u, this)
                 }
+                removeLoadingDiv(f);// 17.06.20 수정 -- 로딩 div 제거
                 return f
             },
             _createOpenTagMarkupAndPutListeners: function(t, e) {
@@ -20744,6 +20794,36 @@ var deviceChk = '';
     }])
 });
 
+//17.06.20 수정 START
+function appendLoadingDiv() {
+    //console.log('로딩 시작[메시지 보냄..]');
+    if ($('#loading').length == 0) {
+        $('.wc-message-group-content').append('<div id="loading" class="wc-message-wrapper list">'
+            + '<div class="wc-message wc-message-from-bot">'
+            + '<div class="wc-message-content">'
+            + '<svg class="wc-message-callout">'
+            /*+ '<path class="point-left" d="m0,6 l6 6 v-12 z"></path>'
+            + '<path class="point-right" d="m6,6 l-6 6 v-12 z"></path>'*/
+            + '</svg>'
+            + '<div>'
+            + '<div class="format-markdown">'
+            + '<p class="ac-container" style="border:1px solid #555;border-radius:5px"><img src="assets/image/chatbotStyle/loading.gif" style="width:50px;padding:10px" /></p>'
+            + '</div>'
+            + '</div>'
+            + '<div class="wc-list">'
+            + '</div>'
+            + '</div>'
+            + '</div>'
+            + '<div class="wc-message-from wc-message-from-bot">'
+            + '<span>&nbsp;</span>'
+            + '</div>'
+            + '</div>');
+
+        $(".wc-message-groups").scrollTop($(".wc-message-groups")[0].scrollHeight);
+    }
+}
+
+//Mobile Check
 function isMobile() {
     var UserAgent = navigator.userAgent;
 
@@ -20753,5 +20833,54 @@ function isMobile() {
     } else {
         deviceChk = 'P';
         return false;
+    }
+}
+
+function removeLoadingDiv(f) {
+    var divCnt = $(".wc-message-group-content > div").length;
+
+    //죄송해요 무슨 말인지 잘 모르겠어요. 처리
+    if (f.node.className === 'wc-message-wrapper list') {
+        var htmlElement = f.node.innerHTML;
+        if (htmlElement.match('wc-message wc-message-from-me') !== null && htmlElement.match('<img') !== null) {
+            f.node.innerHTML = htmlElement.replace('wc-message-content', '');
+        }
+
+        try {
+            childClassName = f.children[0].node.className;
+        } catch (err) {
+            childClassName = f.node.childNodes[0].className;
+        }
+        if (childClassName == 'wc-message wc-message-from-bot') {
+            var parent = document.getElementsByClassName('wc-message-group-content')[0];
+            var removeElement = document.getElementById('loading');
+            if (removeElement != null) {
+                parent.removeChild(removeElement);
+            }
+        }
+    }
+    if (f.node.className !== '') {
+        if (f.node.className.toString() === 'wc-message-wrapper carousel') {
+            var childClassName;
+
+            if (f.children[0] !== undefined) { // ie
+                childClassName = f.children[0].node.className;
+            } else { // chrome
+                childClassName = f.node.childNodes[0].className;
+            }
+
+            if (f.children[0] !== '' && childClassName === 'wc-message wc-message-from-bot') {
+                //console.log('로딩 끝');
+
+
+                if (document.getElementById('loading') != null) {
+                    var parent = document.getElementsByClassName('wc-message-group-content')[0];
+                    var removeElement = document.getElementById('loading');
+                    //focus
+                    parent.focus();
+                    parent.removeChild(removeElement);
+                }
+            }
+        }
     }
 }
