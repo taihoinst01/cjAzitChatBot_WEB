@@ -7675,9 +7675,13 @@
                             }
                         }, o.createElement("div", {
                             className: s
-                        }, o.createElement("svg", {
-                            className: "wc-message-callout"
+                        },
+                            o.createElement("img", {
+                                src: "assets/image/chatbotStyle/ico_profi_80.png", className: "wc-message-callout"
                         }
+                        //o.createElement("svg", {
+                        //    className: "wc-message-callout"
+                        //}
                             //                o.createElement("path", {
                             //    className: "point-left",
                             //    d: "m0,6 l6 6 v-12 z"
@@ -20801,13 +20805,14 @@ function appendLoadingDiv() {
         $('.wc-message-group-content').append('<div id="loading" class="wc-message-wrapper list">'
             + '<div class="wc-message wc-message-from-bot">'
             + '<div class="wc-message-content">'
-            + '<svg class="wc-message-callout">'
-            /*+ '<path class="point-left" d="m0,6 l6 6 v-12 z"></path>'
-            + '<path class="point-right" d="m6,6 l-6 6 v-12 z"></path>'*/
-            + '</svg>'
+            //+ '<svg class="wc-message-callout">'
+            //+ '<path class="point-left" d="m0,6 l6 6 v-12 z"></path>'
+            //+ '<path class="point-right" d="m6,6 l-6 6 v-12 z"></path>'
+            //+ '</svg>'
+            + '<img src="assets/image/chatbotStyle/ico_profi_80.png" class="wc-message-callout">'
             + '<div>'
             + '<div class="format-markdown">'
-            + '<p class="ac-container" style="border:1px solid #555;border-radius:5px"><img src="assets/image/chatbotStyle/loading.gif" style="width:50px;padding:10px" /></p>'
+            + '<p class="ac-container" style="border:1px solid #555;border-radius:7px"><img src="assets/image/chatbotStyle/loading.gif" style="width:80px;padding:10px" /></p>'
             + '</div>'
             + '</div>'
             + '<div class="wc-list">'

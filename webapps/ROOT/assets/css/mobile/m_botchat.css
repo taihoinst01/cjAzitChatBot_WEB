@@ -227,7 +227,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   .wc-card button {
     /*background-color: transparent;
     color: #3a96dd;*/
-    background-color: #555;
+    background-color: #326E9B;
     color: #fff;
     min-height: 32px;
     width: 100%;
@@ -237,10 +237,10 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
     border-color: #3a96dd;*/
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
-    background-color: #000;
+    background-color: #024468;
     color: #fff; }
   .wc-card button:active {
-    background-color: #555;
+    background-color: #326E9B;
     color: #ffffff; }
   .wc-card.receipt table {
     border-collapse: collapse;
@@ -430,13 +430,21 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
 .wc-message-from-bot svg.wc-message-callout path.point-right {
   display: none; }
 
-.wc-message-from-bot svg.wc-message-callout {
+/*.wc-message-from-bot svg.wc-message-callout {
   background: url("../../image/chatbotStyle/ico_profi.png") no-repeat;
   width: 30px;
   height: 30px;
   display: inline-block;
-  /*position: fixed;*/
+  position: fixed;
   margin: -10px 0 0 -40px
+}*/
+.wc-message-from-bot div .wc-message-callout {
+  /*background: url("../../image/chatbotStyle/ico_profi_36.png") no-repeat;*/
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  position: fixed;
+  margin: 0 0 0 -40px
 }
 
 /* console */
