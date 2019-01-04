@@ -141,7 +141,16 @@ $(function () {
     $('.wc-shellinput').click(function () {
         $('.wc-message-groups').scrollTop($('.wc-message-group-content')[0].scrollHeight);
     });
-    
+
+    //안드로이드 포커스시 스크롤 최상단으로
+    $(".wc-shellinput").focus(function (e) {
+        if (!isIOS()) {
+            setTimeout((function () {
+                $('.wc-message-groups').animate({ scrollTop: $('.wc-message-group-content')[0].scrollHeight });
+            }), 200);
+        }
+    });
+
     //챗봇 제스처 동작
     var startGesture = 0;
     $('.topGestureArea').click(function () {
@@ -302,16 +311,12 @@ $(function () {
     });
 });
 
-//챗봇 메뉴 처음으로 돌아가기
-//function viewMenu() {
-//    var returnText = "return home";     // 처음으로 돌아가는 텍스트
-//    $('div.wc-console').addClass('has-text');
-//    $('input[type="text"].wc-shellinput').attr('value', returnText);
-//    $('input[type="text"].wc-shellinput').val(returnText);
-//    $('label.wc-send').trigger('click');
-//    $('input[type="text"].wc-shellinput').attr('value', '');
-//    $('input[type="text"].wc-shellinput').val('');
-//    $('.wc-console').removeClass('has-text');
-//    $('.menuBox').removeClass('on').addClass('off');
-//    $('.menuBox').css({ 'display': 'none' });
-//}
+function isIOS() {
+    var UserAgent = navigator.userAgent;
+
+    if (UserAgent.match(/iPhone|iPad|iPod/i) != null) {
+        return true;
+    } else {
+        return false;
+    }
+}
