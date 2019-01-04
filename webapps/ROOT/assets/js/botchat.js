@@ -1,4 +1,9 @@
-! function(t, e) {
+//초기 한번 Flag
+var startFlag = 0;
+//device check(PC, Mobile)
+var deviceChk;
+
+! function (t, e) {
     "object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.BotChat = e() : t.BotChat = e()
 }(this, function() {
     return function(t) {
@@ -1324,7 +1329,7 @@
                     var r;
 
                     //KSO :: DeviceChk(P-PC, M-Mobile)
-                    //isMobile();
+                    isMobile();
                     //console.log(deviceChk);
 
                     return "detect" === this.props.resize && (r = i.createElement(g, {
@@ -7009,6 +7014,23 @@
                 var e = t.attachments,
                     n = t.attachmentLayout,
                     a = r.__rest(t, ["attachments", "attachmentLayout"]);
+
+                /*KSO*/
+                var msgMinutes = new Date().getMinutes();
+                var tempMinutes = msgMinutes;
+                if (msgMinutes < 10) {
+                    tempMinutes = "0" + tempMinutes.toString();
+                }
+                var getHour = new Date().getHours();
+                var ampm = '오전';
+                if (getHour > 12) {
+                    getHour = getHour - 12
+                    ampm = '오후';
+                }
+                var writeTime = ampm + " " + getHour + ":" + tempMinutes;
+                var timeDiv = "";
+                timeDiv = o.createElement("p", { className: "timeStampBot" }, writeTime);
+
                 return e && 0 !== e.length ? "carousel" === n ? o.createElement(s.Carousel, r.__assign({
                     attachments: e
                 }, a)) : o.createElement("div", {
@@ -7021,7 +7043,7 @@
                         onCardAction: t.onCardAction,
                         onImageLoad: t.onImageLoad
                     })
-                })) : null
+                }), timeDiv) : null
             },
             u = function(t) {
                 function e(e) {
@@ -7163,23 +7185,23 @@
                     n = this.state && this.state.errors && this.state.errors.length > 0;
 
                 /*KSO*/
-                var msgMinutes = new Date().getMinutes();
-                var tempMinutes = msgMinutes;
-                if (msgMinutes < 10) {
-                    tempMinutes = "0" + tempMinutes.toString();
-                }
-                var getHour = new Date().getHours();
-                var ampm = '오전';
-                if (getHour > 12) {
-                    getHour = getHour - 12
-                    ampm = '오후';
-                }
-                var writeTime = ampm + " " + getHour + ":" + tempMinutes;
-                var timeDiv = "";
+                //var msgMinutes = new Date().getMinutes();
+                //var tempMinutes = msgMinutes;
+                //if (msgMinutes < 10) {
+                //    tempMinutes = "0" + tempMinutes.toString();
+                //}
+                //var getHour = new Date().getHours();
+                //var ampm = '오전';
+                //if (getHour > 12) {
+                //    getHour = getHour - 12
+                //    ampm = '오후';
+                //}
+                //var writeTime = ampm + " " + getHour + ":" + tempMinutes;
+                //var timeDiv = "";
 
-                if (this.props.card.actions.length == 0) {
-                    timeDiv = s.createElement("p", { className: "timeStampBot" }, writeTime);
-                }
+                //if (this.props.card.actions.length == 0) {
+                //    timeDiv = s.createElement("p", { className: "timeStampBot" }, writeTime);
+                //}
 
                 return t = n ? s.createElement("div", null, s.createElement("svg", {
                     className: "error-icon",
@@ -7198,7 +7220,7 @@
                     onClick: function (t) {
                         return e.onClick(t)
                     }
-                }, t, timeDiv)
+                }, t/*, timeDiv*/)
             }, e.prototype.componentDidUpdate = function() {
                 this.props.onImageLoad && this.props.onImageLoad()
             }, e
@@ -7316,7 +7338,13 @@
                 }
                 return r.__extends(e, t), e.prototype.updateContentWidth = function() {
                     //var t = this.props.size.width - this.props.format.carouselMargin;
-                    var t = parseInt($('.wc-message-groups').css('width')) - this.props.format.carouselMargin - 30; //KSO 줄였을때 carousel 크기 조정
+                    //KSO 줄였을때 carousel 크기 조정
+                    var carouselMargin = this.props.format.carouselMargin;
+                    var subMargin = 30;
+                    if (deviceChk == 'M') {
+                        carouselMargin = 44;    //모바일일때 동일하나(아이폰 플러스의 경우 마진 오류로 인한 조정)
+                    }
+                    var t = parseInt($('.wc-message-groups').css('width')) - carouselMargin - subMargin; 
                     this.root.style.width = "", this.root.offsetWidth > t && (this.root.style.width = t.toString() + "px", this.hscroll.updateScrollButtons())
                 }, e.prototype.componentDidMount = function() {
                     this.updateContentWidth()
@@ -7499,7 +7527,9 @@
                     this.autoscroll()
                 }, e.prototype.autoscroll = function() {
                     var t = Math.max(0, h(this.scrollMe) - this.scrollContent.offsetHeight);
-                    this.scrollContent.style.marginTop = t + "px";
+
+                    //KSO 다이얼로그 위에서부터 표출하기위에 margin 주석
+                    //this.scrollContent.style.marginTop = t + "px";
                     var e = this.props.activities[this.props.activities.length - 1],
                         n = e && this.props.isFromMe && this.props.isFromMe(e);
                     (this.scrollToBottom || n) && (this.scrollMe.scrollTop = this.scrollMe.scrollHeight - this.scrollMe.offsetHeight)

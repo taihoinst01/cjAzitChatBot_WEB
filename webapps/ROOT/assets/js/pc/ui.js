@@ -1,5 +1,9 @@
 $(function () {
-    $('#wrapper').css({ 'height': ($(document).height()) + 'px'});
+    //mobile margin 초기화
+    $('.wc-message-group-content').css({ 'margin-top': 0 });
+
+    $('#wrapper').css({ 'height': ($(document).height()) + 'px' });
+    $('.wc-chatview-panel').css({ 'height': ($(document).height()) + 'px' });
     $(window).resize(function () {
         //$('#wrapper').css({ 'height': ($(document).height()) + 'px' });
     });
@@ -141,25 +145,13 @@ $(function () {
         }
     });
 
-    //챗봇 메뉴 버튼 동작
-    $('.sapIcon').click(function () {
-        if ($('.sapBtn').hasClass("off")) {
-            $('.sapBtn').removeClass('off').addClass('on');
-            $('.sapIcon').css({ 'background-color': '#00aad2' });
-        } else {
-            $('.sapBtn').removeClass('on').addClass('off');
-            $('.sapIcon').css({ 'background-color': '#302f35' });
-        }
+    //input창 클릭 및 키 입력시 하단으로 내리기
+    $('.wc-shellinput').keyup(function () {
+        $('.wc-message-groups').scrollTop($('.wc-message-group-content')[0].scrollHeight);
     });
-    //$('.menuIcon').click(function () {
-    //    if ($('.menuBox').hasClass("off")) {
-    //        $('.menuBox').removeClass('off').addClass('on');
-    //        $('.menuBox').css({ 'display': 'block' });
-    //    } else {
-    //        $('.menuBox').removeClass('on').addClass('off');
-    //        $('.menuBox').css({ 'display': 'none' });
-    //    }
-    //});
+    $('.wc-shellinput').click(function () {
+        $('.wc-message-groups').scrollTop($('.wc-message-group-content')[0].scrollHeight);
+    });
     
     //챗봇 제스처 동작
     var startGesture = 0;

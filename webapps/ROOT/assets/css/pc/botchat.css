@@ -37,7 +37,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   height: 50px;
   left: 0;
   letter-spacing: 0.5px;
-  padding: 16px 8px 0 8px;
+  /*padding: 16px 8px 0 8px;*/
   position: absolute;
   right: 0;
   top: 0;
@@ -435,12 +435,12 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   position: fixed;
   margin: -10px 0 0 -40px
 }*/
-.wc-message-from-bot div .wc-message-callout {
+.wc-message-from-bot div img.wc-message-callout {
   /*background: url("../../image/chatbotStyle/ico_profi_36.png") no-repeat;*/
   width: 36px;
   height: 36px;
   display: inline-block;
-  position: fixed;
+  position: absolute;
   margin: 0 0 0 -40px
 }
 
@@ -472,6 +472,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   width: 100%; 
   background-color:#e0e0e0; /*input 색상 변경*/
   /*margin-left:10px*/
+  border-radius:15px;
 }
 
 .wc-send svg {
@@ -488,8 +489,8 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
 .wc-textbox {
   bottom: 0;
   /*left: 60px;*/
-  left:40px;
-  right: 70px; }
+  left: 15px;
+  right: 50px; }
 
 .wc-send {
   right: 0; }

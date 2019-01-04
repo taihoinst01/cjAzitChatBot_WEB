@@ -37,7 +37,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   height: 50px;
   left: 0;
   letter-spacing: 0.5px;
-  padding: 16px 8px 0 8px;
+  /*padding: 16px 8px 0 8px;*/
   position: absolute;
   right: 0;
   top: 0;
@@ -145,7 +145,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
     overflow: hidden;
     /*background: #34373c;*/
     width: 100%;
-    max-width: 380px;
+    /*max-width: 380px;*/
     height: 100%;
     position: inherit;
     /*border: 0px;
@@ -379,7 +379,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   .wc-carousel button.scroll.previous {
     left: 0 }
   .wc-carousel button.scroll.next {
-    right: 4px; }
+    right: 0; }
   .wc-carousel .wc-hscroll > ul {
     margin-left: -4px; }
   .wc-carousel .wc-hscroll > ul > li {
@@ -438,12 +438,12 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   position: fixed;
   margin: -10px 0 0 -40px
 }*/
-.wc-message-from-bot div .wc-message-callout {
+.wc-message-from-bot div img.wc-message-callout {
   /*background: url("../../image/chatbotStyle/ico_profi_36.png") no-repeat;*/
   width: 36px;
   height: 36px;
   display: inline-block;
-  position: fixed;
+  position: absolute;
   margin: 0 0 0 -40px
 }
 
@@ -475,7 +475,8 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
     resize: none;
     width: 100%;
     background-color: #e0e0e0; /*input 색상 변경*/
-    padding-left:10px
+    padding-left:10px;
+    border-radius:15px;
 }
 
 .wc-send svg {
@@ -492,8 +493,8 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
 .wc-textbox {
   bottom: 0;
   /*left: 60px;*/
-  left:40px;
-  right: 60px; }
+  left: 5px;
+  right: 50px; }
 
 .wc-send {
   right: 0; }
