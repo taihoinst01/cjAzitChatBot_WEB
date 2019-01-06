@@ -3594,7 +3594,7 @@ var deviceChk;
                     else if (t.status >= 400 && t.status < 500) return i.Observable.throw(t);
                     //KSO
                     else if (502 === t.status) {
-                        location.href='error.server.html';  // 서버 반영 중일때 error page
+                        location.href='error_server.html';  // 서버 반영 중일때 error page
                     //    return i.Observable.ajax({
                     //        method: "POST",
                     //        url: t.request.url,
