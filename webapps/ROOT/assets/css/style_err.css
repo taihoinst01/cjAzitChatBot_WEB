@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+@import url(https://recmcdn.cj.net/recruit/ko/css/font.css);
+
+/* **************************************** *
+ * RESET FILES
+ * **************************************** */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,time,figure,article,nav,header,footer,hgroup,video,audio,aside,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,button{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-weight:inherit;
+	font-style:inherit;
+	font-family:inherit;
+	vertical-align:baseline;
+	font-family:"CJONLYONENEWbodyRegular","Avenir Next", "Noto Sans", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", メイリオ, "Apple SD Gothic Neo", "Nanum Barun Gothic", "Helvetica", "Arial", "Malgun Gothic", "맑은 고딕", 돋움, Dotum, sans-serif;
+	box-sizing:border-box;
+	font-size:14px;
+}
+ol,ul{list-style:none;}
+table{border-collapse:separate;border-spacing:0;}
+caption,th,td{text-align:left;font-weight:normal;}
+figure,article,header,footer,nav,hgroup,video,audio,aside{display:block;}
+html, body{overflow:hidden;}
+.no-skrollr{position:fixed;width:100%;height:100%;}
+a,button{cursor:pointer;}
+::placeholder{color:#98a7b3;}
+*:focus{outline:none;}
+input{font-size:15px;-webkit-appearance:none;-webkit-border-radius:0;}
+input:disabled, textarea:disabled{opacity:1;-webkit-text-fill-color:inherit;}
+
+.service{position:relative;width:100%;min-width:320px;}
+.service .wrap{max-width:960px;margin:0 auto;padding:30px 15px;}
+.service .wrap:before{display:block;width:104px;height:104px;margin:0 auto;background:url('../image/chatbotStyle/ico_background.png') no-repeat;background-size:220px auto;content:'';}
+.service h3{padding:30px 0 0px;font-family:'CJONLYONENEWtitleMedium';font-size:20px;line-height:2;text-align:center;}
+.service dl, .service p{font-family:'CJONLYONENEWbodyRegular';}
+.service dl{max-width:320px;margin:0 auto;padding-top:30px;text-align:left;line-height:2;}
+.service p{padding:30px 0 0;line-height:1.8;text-align:center;}
+.service div{margin:0 auto;text-align:center;}
+.service div button{display:inline-block;width:120px;height:42px;font-size:13px;line-height:42px;background:#000;color:#fff;}
+.service div button:last-child{margin-left:10px;}
+.service p + div{padding-top:40px;text-align:center;}
+
+.service.check .wrap:before{background-position:0 0;}
+.service.server .wrap:before,
+.service.route .wrap:before{background-position:-116px 0;}
+.service.server div button{margin:0 auto;}
+
+@media(max-width:480px){
+	.service.check dl{max-width:100%;}
+}

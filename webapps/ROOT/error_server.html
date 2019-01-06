@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv=Content-Type>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/style_err.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<title>잠시 서비스를 이용하실 수 없습니다.</title>
+
+	<script>
+		$(function () {
+			if (isMobile()) {
+				$('#deviceBtn').add("<button type='button' class='btnClick' onclick='javascript:history.back(-1)'>이전 페이지</button>").appendTo("#deviceBtn");
+			} else {
+				$('#deviceBtn').add("<button type='button' class='btnClick' onclick='javascript:window.close()'>닫기</button>").appendTo("#deviceBtn");
+			}
+		});
+
+		function isMobile() {
+			var UserAgent = navigator.userAgent;
+
+			if (UserAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<section class="service parking">
+	<div class="wrap">
+		<h3>죄송합니다.<br>
+		잠시 서비스를 이용하실 수 없습니다.</h3>
+		<p>
+			서비스 긴급 점검으로 인해 요청하신 페이지에
+			접속하실 수 없습니다.<br>
+			잠시 후 다시 이용해 주시기 바랍니다.<br>
+			서비스 이용에 불편을 드려 죄송합니다.<br>
+		</p>
+		<p>
+			기타 궁금하신 사항은 고객센터 (<a href="tel:1577-8888">1577-8888</a>)로
+			문의 주시기 바랍니다.
+		</p>
+		<div id="deviceBtn"></div>
+	</div>
+</section>
+
+</body>
+</html>
+
