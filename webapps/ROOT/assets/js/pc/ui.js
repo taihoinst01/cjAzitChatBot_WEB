@@ -27,11 +27,12 @@ $(function () {
     $('.wc-chatview-panel').css({ 'height': ($(document).height()) + 'px' });
     $(window).resize(function () {
         //$('#wrapper').css({ 'height': ($(document).height()) + 'px' });
+        $('.wc-carousel').css({ 'width': ($(document).width()-74) + 'px' });
     });
 
     $(document).on('click', '#botChatBtn', function () {
 		$('.wc-chatview-panel').css('bottom', 0).show();
-      $('.bot-wrap').show();
+        $('.bot-wrap').show();
 	});
 
     //360 팝업창 생성(cardDivision : reel)
