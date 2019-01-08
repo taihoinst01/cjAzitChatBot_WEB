@@ -7904,8 +7904,10 @@ var deviceChk;
                             // if ($('.sapBtn').hasClass("on") && (e.key == 'Enter')) {
                             //     console.log("SAP search : " + t.props.inputText);
                             // }
-                            t.props.inputText = t.textInput.value;
-                            t.textInput.value = '';
+                            if (e.key == 'Enter') {
+                                t.props.inputText = t.textInput.value;
+                                t.textInput.value = '';
+                            }
 
                             return t.onKeyPress(e)
                         },
