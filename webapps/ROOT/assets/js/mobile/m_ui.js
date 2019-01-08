@@ -198,7 +198,6 @@ $(function () {
 
     //SEND버튼
     $('.wc-shellinput').keyup(function () {
-        $('.wc-send').tooltip('destroy'); //key입력시 tooptip삭제
         $('.menuBox').removeClass('on').addClass('off').css({ 'display': 'none' });
         $('.menuIcon_active').removeClass('menuIcon_active').addClass('menuIcon');
         $('.wc-console').animate({ 'bottom': 10 + 'px' }, 'fast');
