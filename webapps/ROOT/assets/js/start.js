@@ -1,6 +1,4 @@
 ﻿$(function () {
-	//$('.bot-wrap').hide();    //처음에 숨기기
-
 	var ie = (function (){
 		if (window.ActiveXObject === undefined) return null;
 		if (!document.querySelector) return 7;
@@ -14,30 +12,6 @@
 		$('.bot-wrap').remove();
 		$(".banner").remove();
 	}
-
-
-
-    
-    //ex) Sample
-    //$.ajax({
-    //    botName: 'cjEmployeeChatBot',
-    //    url: 'http://52.90.211.109:3000/apiServer/getChatTemplate?chat_name=TIIZChatBotV3',
-    //    dataType: 'json',
-    //    type: 'POST',
-    //    success: function (data) {
-    //        //mngData = data.lang;
-    //        console.log(data);
-    //        //"dog": [
-    //        //  "웰시코기",
-    //        //  "포메라니안",
-    //        //  "푸들"
-    //        //  "background-color: #000000",
-    //        //  "color: blue"
-    //        //]
-    //    }
-    //});
-
-    //$('.wc-message-groups').css({ 'background-color': '#000'});
 });
 
 function isMobile() {
@@ -51,12 +25,6 @@ function isMobile() {
 }
 
 if (isMobile()) {   //모바일 환경
-    //1. Click 호출
-    //$(document).on('click', '#botChatBtn', function () {
-	//	location.href = "index_m.html";
-    //});
-
-    //2. 로딩시 표출
     location.href = "index_m.html";
 } else {    // 웹 환경
 
