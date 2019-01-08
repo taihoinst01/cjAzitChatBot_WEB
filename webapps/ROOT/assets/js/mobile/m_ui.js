@@ -28,7 +28,7 @@ $(function () {
     $(".wc-console > div").add(
         "<div class='menuBox off'>" +
             "<ul type='none'>" +
-            "<li class='menuSelectBtn'>음악장학사업</li>" +
+            "<li class='menuSelectBtn btn1'>음악장학사업</li>" +
             "<li class='menuSelectBtn'>시나리오</li>" +
             "<li class='menuSelectBtn'>단편영화</li>" +
             "<li class='menuSelectBtn'>뮤지션지원</li>" +
