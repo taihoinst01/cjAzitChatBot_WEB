@@ -28,12 +28,12 @@ $(function () {
     $(".wc-console > div").add(
         "<div class='menuBox off'>" +
             "<ul type='none'>" +
-            "<li class='menuSelectBtn'>대중음악</li>" +
+            "<li class='menuSelectBtn'>음악장학사업</li>" +
             "<li class='menuSelectBtn'>시나리오</li>" +
             "<li class='menuSelectBtn'>단편영화</li>" +
-            "<li class='menuSelectBtn'>뮤지션</li>" +
+            "<li class='menuSelectBtn'>뮤지션지원</li>" +
             "<li class='menuSelectBtn'>공간지원</li>" +
-            "<li class='menuSelectBtn'>뮤지컬</li>" +
+            "<li class='menuSelectBtn'>뮤지컬지원</li>" +
             "<li class='menuSelectBtn'>공연장</li>" +
             "</ul>" +
         "</div > ").appendTo(".wc-console");
@@ -42,12 +42,12 @@ $(function () {
     //챗봇 menu 선택
     $('.menuSelectBtn').click(function () {
         var v = $(this).html();
-        if(v == '대중음악') {v = '대중음악장학사업';}
+        if(v == '음악장학사업') {v = '대중음악장학사업';}
         else if(v == '시나리오') {v = '스토리업 - 시나리오 작가 지원';}
         else if(v == '단편영화') {v = '스토리업 - 단편영화 제작 지원';}
-        else if(v == '뮤지션') {v = '튠업';}
+        else if(v == '뮤지션지원') {v = '튠업';}
         else if(v == '공간지원') {v = '스테이지업 - 공간지원';}
-        else if(v == '뮤지컬') {v = '스테이지업 - 뮤지컬';}
+        else if(v == '뮤지컬지원') {v = '스테이지업 - 뮤지컬';}
         else if(v == '공연장') {v = '공연장 문의';}
         $('div.wc-console').addClass('has-text');
         $('input[type="text"].wc-shellinput').attr('value', v).val(v);
