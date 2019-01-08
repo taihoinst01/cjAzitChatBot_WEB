@@ -3593,7 +3593,7 @@ var deviceChk;
                     if (403 === t.status) this.expiredToken();
                     else if (t.status >= 400 && t.status < 500) return i.Observable.throw(t);
                     //KSO
-                    else if (502 === t.status) {
+                    else if (500 === t.status || 502 === t.status || 503 === t.status) {
                         location.href='error_server.html';  // 서버 반영 중일때 error page
                     //    return i.Observable.ajax({
                     //        method: "POST",
