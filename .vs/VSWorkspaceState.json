@@ -4,8 +4,13 @@
     "\\webapps",
     "\\webapps\\ROOT",
     "\\webapps\\ROOT\\assets",
-    "\\webapps\\ROOT\\assets\\js"
+    "\\webapps\\ROOT\\assets\\css",
+    "\\webapps\\ROOT\\assets\\css\\mobile",
+    "\\webapps\\ROOT\\assets\\css\\pc",
+    "\\webapps\\ROOT\\assets\\js",
+    "\\webapps\\ROOT\\assets\\js\\mobile",
+    "\\webapps\\ROOT\\assets\\js\\pc"
   ],
-  "SelectedNode": "\\webapps\\ROOT\\assets\\js\\ui.js",
+  "SelectedNode": "\\webapps\\ROOT\\assets\\js\\botchat.js",
   "PreviewInSolutionExplorer": false
 }

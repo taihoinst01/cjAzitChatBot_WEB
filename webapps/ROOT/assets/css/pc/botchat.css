@@ -135,7 +135,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   bottom: 10px;
   box-sizing: border-box;
   height: 50px;
-  left: 10px;
+  left: 50px;
   position: absolute;
   right: 10px; 
   border-radius:20px }
@@ -470,7 +470,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   padding: 0;
   resize: none;
   width: 100%; 
-  background-color:#e0e0e0; /*input »ö»ó º¯°æ*/
+  background-color:#e0e0e0; /*input ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
   /*margin-left:10px*/
   border-radius:15px;
 }

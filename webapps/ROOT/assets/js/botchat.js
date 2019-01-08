@@ -7863,11 +7863,11 @@ var deviceChk;
                         //}, o.createElement("div", {
                         //    className: "sapIcon"
                         //    }, 'SAP')),
-                        //o.createElement("div", {
-                        //    className: "wc-menu"
-                        //}, o.createElement("div", {
-                        //    className: "menuIcon"
-                        //    }, 'menu')),
+                        o.createElement("div", {
+                           className: "wc-menu"
+                        }, o.createElement("div", {
+                           className: "menuIcon"
+                        })),
                         o.createElement("div", {
                             className: "wc-textbox"
                         },
@@ -7883,27 +7883,29 @@ var deviceChk;
                             return t.props.onChangeText(t.textInput.value)
                         },
                         onKeyPress: function (e) {
-                            //KSO (autocomplete)
-                            if (($('.hiddenText').attr('value') != '') && (t.textInput.value !== '') && (e.key == 'Enter')) {
-                                t.props.inputText = t.textInput.value;
-                                t.textInput.value = '';
-                                $('.hiddenText').attr('value', '');
-                            }
-                            //STT
-                            if (($('.sttText').attr('value') != '') && (t.textInput.value !== '') && (e.key == 'Enter')) {
-                                t.props.inputText = t.textInput.value;
-                                t.textInput.value = '';
-                                $('.sttText').attr('value', '');
-                            }
-                            //KSO (menu 부분 현재 사용x)
-                            if ((t.props.inputText === 'return home') && (t.textInput.value == '') && (e.key == 'Enter')) {
-                                t.props.inputText = '';
-                            }
+                            // //KSO (autocomplete)
+                            // if (($('.hiddenText').attr('value') != '') && (t.textInput.value !== '') && (e.key == 'Enter')) {
+                            //     t.props.inputText = t.textInput.value;
+                            //     t.textInput.value = '';
+                            //     $('.hiddenText').attr('value', '');
+                            // }
+                            // //STT
+                            // if (($('.sttText').attr('value') != '') && (t.textInput.value !== '') && (e.key == 'Enter')) {
+                            //     t.props.inputText = t.textInput.value;
+                            //     t.textInput.value = '';
+                            //     $('.sttText').attr('value', '');
+                            // }
+                            // //KSO (menu 부분 현재 사용x)
+                            // if ((t.props.inputText === 'return home') && (t.textInput.value == '') && (e.key == 'Enter')) {
+                            //     t.props.inputText = '';
+                            // }
 
-                            //KSO (sap 체크 여부 판단)
-                            if ($('.sapBtn').hasClass("on") && (e.key == 'Enter')) {
-                                console.log("SAP search : " + t.props.inputText);
-                            }
+                            // //KSO (sap 체크 여부 판단)
+                            // if ($('.sapBtn').hasClass("on") && (e.key == 'Enter')) {
+                            //     console.log("SAP search : " + t.props.inputText);
+                            // }
+                            t.props.inputText = t.textInput.value;
+                            t.textInput.value = '';
 
                             return t.onKeyPress(e)
                         },
@@ -7924,26 +7926,28 @@ var deviceChk;
                         className: r,
                         onClick: function () {
                             //KSO (autocomplete)
-                            if (($('.hiddenText').attr('value') != '') && (t.textInput.value !== '')) {
-                                t.props.inputText = t.textInput.value;
-                                t.textInput.value = '';
-                                $('.hiddenText').attr('value', '');
-                            }
-                            //STT
-                            if (($('.sttText').attr('value') != '') && (t.textInput.value !== '')) {
-                                t.props.inputText = t.textInput.value;
-                                t.textInput.value = '';
-                                $('.sttText').attr('value', '');
-                            }
-                            //KSO (menu 부분 현재 사용x)
-                            if ((t.props.inputText === '' || t.props.inputText === 'return home') && (t.textInput.value !== '')) {
-                                t.props.inputText = t.textInput.value;
-                            }
+                            // if (($('.hiddenText').attr('value') != '') && (t.textInput.value !== '')) {
+                            //     t.props.inputText = t.textInput.value;
+                            //     t.textInput.value = '';
+                            //     $('.hiddenText').attr('value', '');
+                            // }
+                            // //STT
+                            // if (($('.sttText').attr('value') != '') && (t.textInput.value !== '')) {
+                            //     t.props.inputText = t.textInput.value;
+                            //     t.textInput.value = '';
+                            //     $('.sttText').attr('value', '');
+                            // }
+                            // //KSO (menu 부분 현재 사용x)
+                            // if ((t.props.inputText === '' || t.props.inputText === 'return home') && (t.textInput.value !== '')) {
+                            //     t.props.inputText = t.textInput.value;
+                            // }
 
-                            //KSO (sap 체크 여부 판단)
-                            if ($('.sapBtn').hasClass("on")) {
-                                console.log("SAP search : " + t.props.inputText);
-                            }
+                            // //KSO (sap 체크 여부 판단)
+                            // if ($('.sapBtn').hasClass("on")) {
+                            //     console.log("SAP search : " + t.props.inputText);
+                            // }
+                            t.props.inputText = t.textInput.value;
+                            t.textInput.value = '';
 
                             return t.onClickSend()
                         }

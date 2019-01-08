@@ -62,6 +62,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   top: 50px;
   transition: transform 0.2s cubic-bezier(0, 0, 0.5, 1); 
   /*background-color:#F2F3F7*/
+  height:calc(100% - 110px);
 }
   .wc-message-groups.no-header {
     top: 0; }
@@ -134,7 +135,7 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
     bottom: 10px;
     box-sizing: border-box;
     height: 50px;
-    left: 10px;
+    left: 50px;
     position: absolute;
     right: 10px;
     border-radius: 20px
@@ -454,13 +455,12 @@ body .wc-app, .wc-app button, .wc-app input, .wc-app textarea div {
   vertical-align: middle; }
 
 .wc-console label {
-    cursor: pointer;
-    display: inline-block;
-    height: 50px;
-    width: 60px;
-    background-color: #e0e0e0;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-color: #e0e0e0;
+  border-radius:20px
 }
 
 .wc-console svg {
