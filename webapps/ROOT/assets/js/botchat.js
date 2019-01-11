@@ -7696,13 +7696,13 @@ var deviceChk;
                         }))
                     } else {
                         //KSO :: SERVER down시에 error page 호출
-                        if(this.props.activity.id == '' && startFlag == 0){
-                            setTimeChk = setTimeout(function(){location.href='error_server.html'}, 5000);
-                            startFlag = 1;
-                        }else if(this.props.activity.id != '' && startFlag == 1){
-                            clearTime(setTimeChk);
-                            startFlag = 2;
-                        }
+                        // if(this.props.activity.id == '' && startFlag == 0){
+                        //     setTimeChk = setTimeout(function(){location.href='error_server.html'}, 10000);
+                        //     startFlag = 1;
+                        // }else if(this.props.activity.id != '' && startFlag == 1){
+                        //     clearTime(setTimeChk);
+                        //     startFlag = 2;
+                        // }
 
                         return o.createElement("div", {
                             "data-activity-id": this.props.activity.id,
