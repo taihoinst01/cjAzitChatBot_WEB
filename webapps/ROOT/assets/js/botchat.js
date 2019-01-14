@@ -6836,7 +6836,7 @@ var deviceChk;
             },
             //fontFamily: '"Segoe UI", sans-serif',
             //fontFamily: '"Nanum Gothic", sans-serif',
-            fontFamily: '"CJONLYONENEWbodyRegular", sans-serif',    //KSO CJ font
+            //fontFamily: '"CJONLYONENEWbodyRegular", sans-serif',    //KSO CJ font
             fontSizes: {
                 small: 12,
                 normal: 13,
