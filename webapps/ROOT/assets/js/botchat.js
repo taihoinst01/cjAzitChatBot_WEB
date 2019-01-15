@@ -12904,11 +12904,11 @@ var deviceChk;
                     "person" == this.style && (n.style.borderRadius = "50%", n.style.backgroundPosition = "50% 50%", n.style.backgroundRepeat = "no-repeat"), n.src = this.url, e.appendChild(n)
 
                     //KSO imgIcon 추가
-                    var imgIcon = document.createElement("div");
-                    var imgIconType = t.parent.parent.adaptiveCardContainer.props.children[0].props.alt + "Img";    // img, play, map, reel
-                    imgIcon.classList.add(imgIconType);
-                    e.appendChild(imgIcon);
-                    e.style.cursor = "pointer";
+                    // var imgIcon = document.createElement("div");
+                    // var imgIconType = t.parent.parent.adaptiveCardContainer.props.children[0].props.alt + "Img";    // img, play, map, reel
+                    // imgIcon.classList.add(imgIconType);
+                    // e.appendChild(imgIcon);
+                    // e.style.cursor = "pointer";
                 }
                 return e
             }, e.prototype.getJsonTypeName = function() {
