@@ -13570,6 +13570,32 @@ var deviceChk;
                             d.appendChild(this._element, o), n++
                         }
                     }
+                var originText = this._element.innerHTML;   //original Data
+                var htmlCnt = 0;                            //치환할 카운트 초기값
+                var _fontTextChk;                           //치환할 텍스트(이미지가 있을시 텍스트가 [1]에 들어있고 없으면 [0]에 들어있음)
+                if (t._items.length > 1) {
+                    _fontTextChk = t._items[1].text;
+                } else {
+                    _fontTextChk = t._items[0].text;
+                }
+
+                if (typeof (_fontTextChk) != 'undefined') {
+                    // Welcome bold랑 color 치환
+                    _fontTextChk = _fontTextChk.substr(0, 6);
+                    if (_fontTextChk == '<bold>') {
+                        originText = originText.split('&lt;bold&gt;').join('');    // <bold> 자르기
+                        originText = originText.split(' color: rgb(0, 0, 0);').join(' color: #326E9B !important;');     //색깔
+                        originText = originText.split(' font-weight: 400;').join(' font-weight: bold;');                //강조
+                    }
+
+                    // HTML TAG로 작성된 부분 적용하기  ex) <sub>아래첨자</sub>
+                    htmlCnt = originText.split('&lt;').length;  //꺽쇠를 자른수 만큼의 Count : 없으면 1, 있으면 1이상
+                    if (htmlCnt > 1) {
+                        originText = originText.replace(/&lt;/g, '<');
+                        originText = originText.replace(/&gt;/g, '>');
+                    }
+                    this._element.innerHTML = originText;
+                }
                 //개행추가 20181113
                 this._element.innerHTML = this._element.innerHTML.split("/n").join("</br>");
                 return this._element
